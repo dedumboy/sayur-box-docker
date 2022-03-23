@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sayurbox-vue
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sayurbox-vue
+  template:
+    metadata:
+      labels:
+        app: sayurbox-vue
+    spec:
+      containers:
+      - name: sayurbox-vue-app
+        image: dedumboy/sayurbox-docker:v1.0
+        ports:
+        - containerPort: 80
